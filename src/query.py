@@ -31,30 +31,6 @@ LLM_MODEL     = os.getenv("LLM_MODEL_NAME", "llama3-8b-8192")
 # Pilih implementasi yang sesuai dengan pilihan LLM kalian
 # =============================================================
 
-
-# def load_vectorstore():
-#     """Memuat vector database yang sudah dibuat oleh indexing.py"""
-#     from langchain_community.embeddings import HuggingFaceEmbeddings
-#     from langchain_community.vectorstores import Chroma
-
-#     if not VS_DIR.exists():
-#         raise FileNotFoundError(
-#             f"Vector store tidak ditemukan di '{VS_DIR}'.\n"
-#             "Jalankan dulu: python src/indexing.py"
-#         )
-
-#     embedding_model = HuggingFaceEmbeddings(
-#         model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-#         model_kwargs={"device": "cpu"}
-#     )
-
-#     vectorstore = Chroma(
-#         persist_directory=str(VS_DIR),
-#         embedding_function=embedding_model
-#     )
-#     return vectorstore
-
-#Percobaan1
 def load_vectorstore():
     
     from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -157,10 +133,7 @@ def answer_question(question: str, vectorstore=None) -> dict:
     # Generate answer
     print("🤖 Mengirim ke LLM...")
     
-    # TODO: Ganti sesuai LLM yang kalian pilih
-    # answer = get_answer_groq(prompt)
     answer = get_answer_gemini(prompt)
-    # answer = get_answer_ollama(prompt)
     
     return {
         "question": question,
