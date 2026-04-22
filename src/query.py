@@ -56,14 +56,12 @@ LLM_MODEL     = os.getenv("LLM_MODEL_NAME", "llama3-8b-8192")
 
 #Percobaan1
 def load_vectorstore():
+    from embeddings import get_embedding_model
     from langchain_community.embeddings import HuggingFaceEmbeddings
     from langchain_community.vectorstores import Chroma
 
     # Pastikan model_name SAMA dengan yang ada di indexing.py
-    embedding_model = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-        model_kwargs={"device": "cpu"}
-    )
+    embedding_model = get_embedding_model()
 
     vectorstore = Chroma(
         persist_directory=str(VS_DIR),

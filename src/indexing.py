@@ -195,23 +195,20 @@ VS_DIR        = Path(os.getenv("VECTORSTORE_DIR", "./vectorstore"))
     # print(f" Index FAISS tersimpan di {VS_DIR}")
 
 #Percobaan1
-def build_index_scratch():
-    """
-    Implementasi RAG: Manual Chunking (Scratch) + ChromaDB.
-    Mendukung format TXT, PDF, dan CSV.
-    """
+def build_index_langchain():
+
     import pandas as pd
     from PyPDF2 import PdfReader
     from langchain_core.documents import Document
     from langchain_community.embeddings import HuggingFaceEmbeddings
     from langchain_community.vectorstores import Chroma
+    from embedding import get_embedding_model
 
     print("=" * 50)
-    print("Memulai Pipeline Indexing (Scratch + ChromaDB)")
+    print("Memulai Pipeline Indexing (Langchain + ChromaDB)")
     print("=" * 50)
 
     # ─── LANGKAH 1: Load Dokumen (Multi-format) ───
-    print("\n📄 Langkah 1: Memuat dokumen...")
     all_chunks = []
 
     for file_path in DATA_DIR.rglob("*"):
@@ -226,7 +223,7 @@ def build_index_scratch():
             df = pd.read_csv(file_path)
             content = df.to_string()
 
-        # ─── LANGKAH 2: Chunking Manual (Scratch) ───
+        # ─── LANGKAH 2: Chunking  ───
         if content:
             # Algoritma sederhana: memotong berdasarkan karakter dengan overlap
             for i in range(0, len(content), CHUNK_SIZE - CHUNK_OVERLAP):
@@ -240,14 +237,9 @@ def build_index_scratch():
     print(f"   {len(all_chunks)} chunk berhasil dibuat dari folder data/")
 
     # ─── LANGKAH 3: Embedding Model ───
-    print("\n🧬 Langkah 3: Menyiapkan model embedding...")
-    embedding_model = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-        model_kwargs={"device": "cpu"}
-    )
+    embedding_model = get_embedding_model()
 
     # ─── LANGKAH 4: Simpan ke ChromaDB ───
-    print(f"\n📥 Langkah 4: Menyimpan ke ChromaDB ({VS_DIR})...")
     VS_DIR.mkdir(parents=True, exist_ok=True)
     
     vectorstore = Chroma.from_documents(
@@ -257,7 +249,7 @@ def build_index_scratch():
     )
     
     print("\n" + "=" * 50)
-    print("✅ Indexing selesai! Data siap digunakan di UI.")
+    print("✅ Indexing dan embedding selesai! Data siap digunakan di UI.")
     print("=" * 50)
     
     return vectorstore
@@ -265,7 +257,7 @@ def build_index_scratch():
 # ─── MAIN ─────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     # TODO: Ganti sesuai implementasi yang kalian pilih
-    # build_index_langchain()
+    build_index_langchain()
     
     # Atau jika from scratch:
-    build_index_scratch()
+    # build_index_scratch()
