@@ -49,9 +49,9 @@ with st.sidebar:
     
     # TODO: Isi informasi kelompok kalian di sini
     st.markdown("""
-    **Kelompok:** *(nama kelompok)*  
-    **Domain:** *(domain dokumen)*  
-    **LLM:** *(provider LLM)*  
+    **Kelompok:** *ChaTrain.ai*  
+    **Domain:** *Bisnis (Jumlah penumpang kereta)*  
+    **LLM:** *Gemini AI*  
     **Vector DB:** ChromaDB  
     **Embedding:** multilingual-MiniLM
     """)
