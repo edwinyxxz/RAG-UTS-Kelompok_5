@@ -11,14 +11,14 @@ Mahasiswa mengisi, memodifikasi, dan mengembangkan kode ini sesuai topik kelompo
 
 | Nama | NIM | Tugas Utama |
 |------|-----|-------------|
-| Edwin Nur Cahyo  | ... | ...         |
-| Dheandra Khoirunnisa Pambudi  | ... | ...         |
-| ya ya ya  | ... | ...         |
+| Edwin Nur Cahyo  | 244311012 | Data Enginner         |
+| Dheandra Khoirunnisa Pambudi  | 244311009 | Data Analysist         |
+| Julyo Firnanda  | 244311016 | Project Manager         |
 
-**Topik Domain:** *(isi: Akademik / Kesehatan / Hukum / Bisnis / Pertanian / Teknologi)*  
-**Stack yang Dipilih:** *(isi: LangChain / LlamaIndex / From Scratch)*  
-**LLM yang Digunakan:** *(isi: Groq / Gemini / Ollama / lainnya)*  
-**Vector DB yang Digunakan:** *(isi: ChromaDB / FAISS / lainnya)*
+**Topik Domain:** *(Bisnis)*  
+**Stack yang Dipilih:** *(LangChain)*  
+**LLM yang Digunakan:** *(Gemini*  
+**Vector DB yang Digunakan:** *(ChromaDB)*
 
 ---
 
