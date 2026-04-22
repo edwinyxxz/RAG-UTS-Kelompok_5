@@ -132,7 +132,7 @@ Semua konfigurasi utama ada di `src/config.py` (atau langsung di setiap file):
 
 ## 🏗️ Arsitektur Sistem
 
-*(Masukkan gambar diagram arsitektur di sini)*
+![Diagram Arsitektur](https://github.com/edwinyxxz/RAG-UTS-Kelompok_5/blob/main/Arsitektur%20Sistem.drawio%20(4).png)
 
 ```
 [Dokumen] → [Loader] → [Splitter] → [Embedding] → [Vector DB]
