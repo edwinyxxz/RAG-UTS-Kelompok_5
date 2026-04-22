@@ -32,17 +32,34 @@ LLM_MODEL     = os.getenv("LLM_MODEL_NAME", "llama3-8b-8192")
 # =============================================================
 
 
+# def load_vectorstore():
+#     """Memuat vector database yang sudah dibuat oleh indexing.py"""
+#     from langchain_community.embeddings import HuggingFaceEmbeddings
+#     from langchain_community.vectorstores import Chroma
+
+#     if not VS_DIR.exists():
+#         raise FileNotFoundError(
+#             f"Vector store tidak ditemukan di '{VS_DIR}'.\n"
+#             "Jalankan dulu: python src/indexing.py"
+#         )
+
+#     embedding_model = HuggingFaceEmbeddings(
+#         model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+#         model_kwargs={"device": "cpu"}
+#     )
+
+#     vectorstore = Chroma(
+#         persist_directory=str(VS_DIR),
+#         embedding_function=embedding_model
+#     )
+#     return vectorstore
+
+#Percobaan1
 def load_vectorstore():
-    """Memuat vector database yang sudah dibuat oleh indexing.py"""
     from langchain_community.embeddings import HuggingFaceEmbeddings
     from langchain_community.vectorstores import Chroma
 
-    if not VS_DIR.exists():
-        raise FileNotFoundError(
-            f"Vector store tidak ditemukan di '{VS_DIR}'.\n"
-            "Jalankan dulu: python src/indexing.py"
-        )
-
+    # Pastikan model_name SAMA dengan yang ada di indexing.py
     embedding_model = HuggingFaceEmbeddings(
         model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
         model_kwargs={"device": "cpu"}
@@ -115,29 +132,33 @@ JAWABAN:"""
 # ─────────────────────────────────────────────────────────────
 # OPSI LLM A: Groq (gratis, cepat) — REKOMENDASI
 # ─────────────────────────────────────────────────────────────
-def get_answer_groq(prompt: str) -> str:
-    """Menggunakan Groq API (gratis, sangat cepat)."""
-    from groq import Groq
+# def get_answer_groq(prompt: str) -> str:
+#     """Menggunakan Groq API (gratis, sangat cepat)."""
+#     from groq import Groq
     
-    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-    response = client.chat.completions.create(
-        model=LLM_MODEL,  # "llama3-8b-8192" atau "mixtral-8x7b-32768"
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.1,   # Rendah = jawaban lebih konsisten/faktual
-        max_tokens=1024
-    )
-    return response.choices[0].message.content
+#     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+#     response = client.chat.completions.create(
+#         model=LLM_MODEL,  # "llama3-8b-8192" atau "mixtral-8x7b-32768"
+#         messages=[{"role": "user", "content": prompt}],
+#         temperature=0.1,   # Rendah = jawaban lebih konsisten/faktual
+#         max_tokens=1024
+#     )
+#     return response.choices[0].message.content
 
 
 # ─────────────────────────────────────────────────────────────
 # OPSI LLM B: Google Gemini (gratis tier)
 # ─────────────────────────────────────────────────────────────
-# def get_answer_gemini(prompt: str) -> str:
-#     import google.generativeai as genai
-#     genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-#     model = genai.GenerativeModel("gemini-1.5-flash")
-#     response = model.generate_content(prompt)
-#     return response.text
+def get_answer_gemini(prompt: str) -> str:
+    # import google.generativeai as genai
+    # genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+    # model = genai.GenerativeModel("gemini-3-flash-preview")
+    
+    from google import genai
+    client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+    response = client.models.generate_content(model="gemini-3-flash-preview", contents=prompt)
+    # response = model.generate_content(prompt)
+    return response.text
 
 
 # ─────────────────────────────────────────────────────────────
@@ -176,8 +197,8 @@ def answer_question(question: str, vectorstore=None) -> dict:
     print("🤖 Mengirim ke LLM...")
     
     # TODO: Ganti sesuai LLM yang kalian pilih
-    answer = get_answer_groq(prompt)
-    # answer = get_answer_gemini(prompt)
+    # answer = get_answer_groq(prompt)
+    answer = get_answer_gemini(prompt)
     # answer = get_answer_ollama(prompt)
     
     return {

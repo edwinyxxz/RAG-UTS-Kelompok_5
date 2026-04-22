@@ -11,9 +11,9 @@ Mahasiswa mengisi, memodifikasi, dan mengembangkan kode ini sesuai topik kelompo
 
 | Nama | NIM | Tugas Utama |
 |------|-----|-------------|
-| ...  | ... | ...         |
-| ...  | ... | ...         |
-| ...  | ... | ...         |
+| Edwin Nur Cahyo  | ... | ...         |
+| Dheandra Khoirunnisa Pambudi  | ... | ...         |
+| ya ya ya  | ... | ...         |
 
 **Topik Domain:** *(isi: Akademik / Kesehatan / Hukum / Bisnis / Pertanian / Teknologi)*  
 **Stack yang Dipilih:** *(isi: LangChain / LlamaIndex / From Scratch)*  
