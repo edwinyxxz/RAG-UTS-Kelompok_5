@@ -112,7 +112,7 @@ Semua konfigurasi utama ada di `src/config.py` (atau langsung di setiap file):
 | `CHUNK_SIZE` | 500 | Ukuran setiap chunk teks (karakter) |
 | `CHUNK_OVERLAP` | 50 | Overlap antar chunk |
 | `TOP_K` | 3 | Jumlah dokumen relevan yang diambil |
-| `MODEL_NAME` | *(isi)* | Nama model LLM yang digunakan |
+| `MODEL_NAME` | *Gemini* | Nama model LLM yang digunakan |
 
 ---
 
@@ -124,6 +124,14 @@ Semua konfigurasi utama ada di `src/config.py` (atau langsung di setiap file):
 |---|-----------|----------------|---------------|-----------|
 | 1 | ... | ... | ... | ... |
 | 2 | ... | ... | ... | ... |
+| 3 | ... | ... | ... | ... |
+| 4 | ... | ... | ... | ... |
+| 5 | ... | ... | ... | ... |
+| 6 | ... | ... | ... | ... |
+| 7 | ... | ... | ... | ... |
+| 8 | ... | ... | ... | ... |
+| 9 | ... | ... | ... | ... |
+| 10 | ... | ... | ... | ... |
 
 **Rata-rata Skor:** ...  
 **Analisis:** ...
