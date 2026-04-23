@@ -17,7 +17,7 @@ Mahasiswa mengisi, memodifikasi, dan mengembangkan kode ini sesuai topik kelompo
 
 **Topik Domain:** *(Bisnis)*  
 **Stack yang Dipilih:** *(LangChain)*  
-**LLM yang Digunakan:** *(Gemini*  
+**LLM yang Digunakan:** *(Gemini)*  
 **Vector DB yang Digunakan:** *(ChromaDB)*
 
 ---
@@ -25,7 +25,7 @@ Mahasiswa mengisi, memodifikasi, dan mengembangkan kode ini sesuai topik kelompo
 ## 🗂️ Struktur Proyek
 
 ```
-rag-uts-[nama-kelompok]/
+rag-uts-kelompok5/
 ├── data/                    # Dokumen sumber Anda (PDF, TXT, dll.)
 │   └── sample.txt           # Contoh dokumen (ganti dengan dokumen Anda)
 ├── src/
@@ -155,4 +155,4 @@ Semua konfigurasi utama ada di `src/config.py` (atau langsung di setiap file):
 
 - **Mata Kuliah:** Data Engineering
 - **Program Studi:** D4 Teknologi Rekayasa Perangkat Lunak
-- **Deadline:** *(isi tanggal)*
+- **Deadline:** *23 April 2026*
